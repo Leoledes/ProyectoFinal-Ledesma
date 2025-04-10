@@ -1,11 +1,14 @@
-function Navbar(){
+import CartWidget from "./CartWidget"
 
-    return ( 
-    <div>
-        <p>Cuidado Personal</p>
-        <p>Farmacia</p>
-        <p>Belleza</p>
-    </div> 
+function Navbar (){
+
+    return (
+        <div>
+            <p>Cuidado Personal</p>
+            <p>Belleza</p>
+            <p>Farmacia</p>
+            <CartWidget></CartWidget>
+        </div>
     )
 }
 
