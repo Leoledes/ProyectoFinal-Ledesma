@@ -1,8 +1,10 @@
+import ItemListContainer from "./components/ItemListContainer"
+
 function App() {
   
   return (
     <>
-      <div></div>
+      <ItemListContainer bienvenida={"Bienvenidos a Sassenach!"}></ItemListContainer>
     </>
   )
 }
