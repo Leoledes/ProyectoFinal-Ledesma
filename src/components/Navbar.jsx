@@ -4,8 +4,8 @@ import CartWidget from "./CartWidget"
 function Navbar (){
 
     return (
-        <div>
-            <img src={logoSassenach} alt="logo Sassenach Farmacia"></img>
+        <div className={"navbar"}>
+            <img src={logoSassenach} alt="logo Sassenach Farmacia" className="logo"></img>
             <p>Cuidado Personal</p>
             <p>Belleza</p>
             <p>Farmacia</p>
