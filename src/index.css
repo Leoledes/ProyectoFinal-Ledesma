@@ -1,26 +1,30 @@
 body {
   background-color: lightgray;
 }
-body .h1{
-  align-items: center;
-}
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  font-family: "Dosis", sans-serif;
   background-color: #0C5908;
   color:antiquewhite;
   padding: 1rem 2rem;
 }
 
 .navbar .logo {
-  width: 200px;
+  width: 15%;
   height: auto;
+  margin-right: 600px;
 }
 
 .carro{
-  width: 50px;
+  width: 45px;
   height: auto;
-  border-radius: 15px;
+  border-radius: 50px;
+}
+
+.bienvenida{
+  display: flex;
+  align-items: center;
 }
