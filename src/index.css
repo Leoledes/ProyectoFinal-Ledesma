@@ -1,5 +1,7 @@
 body {
   background-color: lightgray;
+  text-align: center;
+  font-family: "Dosis", sans-serif;
 }
 
 .navbar {
@@ -7,8 +9,9 @@ body {
   justify-content: space-between;
   align-items: center;
   font-family: "Dosis", sans-serif;
+  font-weight: 300;
   background-color: #0C5908;
-  color:antiquewhite;
+  color:#FFFFFF;
   padding: 1rem 2rem;
 }
 
@@ -22,9 +25,4 @@ body {
   width: 45px;
   height: auto;
   border-radius: 50px;
-}
-
-.bienvenida{
-  display: flex;
-  align-items: center;
 }
