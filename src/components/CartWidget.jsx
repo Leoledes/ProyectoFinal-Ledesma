@@ -1,7 +1,12 @@
 import CarritoCompras from "../img/carritoCompras.png"
-function CartWidget (){
 
-    return <img src={CarritoCompras} alt="carrito" className="carro"></img>
+function CartWidget (){
+    return (
+        <div className={"cartcontainer"}>
+          <img className={"carticon"} src={CarritoCompras} alt="Carrito"></img>
+          <span className={"cartcount"}>0</span>
+        </div>
+    )
 }
 
 export default CartWidget

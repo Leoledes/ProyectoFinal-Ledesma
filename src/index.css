@@ -21,8 +21,24 @@ body {
   margin-right: 600px;
 }
 
-.carro{
-  width: 45px;
+.cartcontainer {
+  position: relative;
+  display: inline-block;
+}
+
+.carticon {
+  width: 40px;
   height: auto;
-  border-radius: 50px;
+}
+
+.cartcount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 7px;
+  border-radius: 50%;
+  text-align: center;
 }
