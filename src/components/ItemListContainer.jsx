@@ -1,5 +1,5 @@
 function ItemListContainer(props){
-    return <h1>{props.bienvenida}</h1>
+    return <h1 className={"bienvenida"}>{props.bienvenida}</h1>
 }
 
 export default ItemListContainer
