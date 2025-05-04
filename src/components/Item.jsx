@@ -1,9 +1,9 @@
 const Item =(props)=>{
 
     return (
-        <div>
+        <div className={"card"}>
             <h2>{props.product.title}</h2>
-            <h3>{props.prodcut.price}</h3>
+            <h3>${props.product.price}</h3>
         </div>
     )
 }
