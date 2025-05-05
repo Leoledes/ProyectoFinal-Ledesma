@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 const Item =(props)=>{
 
     return (
@@ -5,7 +6,7 @@ const Item =(props)=>{
             <h2>{props.product.title}</h2>
             <img>{props.product.img}</img>
             <h3>${props.product.price}</h3>
-            <link>Ir a descripción del producto</link>
+            <Link to={`/item/${props.product.id}`}>Ir a descripción del producto</Link>
         </div>
     )
 }
