@@ -7,6 +7,7 @@ const ItemDetailContainer = () => {
     const { productId } = useParams()
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
+    
 useEffect(()=>{
     getSingleProduct(productId).then((productFromPromise)=>{
         setProduct(productFromPromise)
@@ -14,15 +15,12 @@ useEffect(()=>{
     })
 },[productId])
 
-    if(loading) return 
-        <div>
-        <span class="loader"></span>
-        </div>
+if (loading) return <span className={"loader"}></span>
 
-    return (
-        <div className={"itemcontainer"}>
-            <ItemDetail product={product}></ItemDetail>
-        </div>
+return (
+    <div className={"itemcontainer"}>
+        <ItemDetail product={product}></ItemDetail>
+    </div>
     )
 }
 

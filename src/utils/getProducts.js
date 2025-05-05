@@ -76,12 +76,12 @@ export const getProducts = (categoryId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             if (categoryId === undefined) resolve(productos)
-            else resolve(productos.filter((producto)=> producto.category === categoryId))}, 1000)
+            else resolve(productos.filter((producto)=> producto.category === categoryId))}, 1500)
     })
 }
 
 export const getSingleProduct = (itemId) => {
     return new Promise((resolve) => {
-        setTimeout(() => resolve(productos.find((product) => product.id === Number(itemId))), 500)
+        setTimeout(() => resolve(productos.find((product) => product.id === Number(itemId))), 1500)
     })
 }

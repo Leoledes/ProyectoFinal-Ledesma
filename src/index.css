@@ -71,6 +71,7 @@ body {
 }
 
 .itemdetail {
+  justify-content: center;
   text-align: center;
   width: 300px;
   border-radius: 16px;
@@ -88,7 +89,7 @@ body {
 }
 
 .itemcontainer {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -103,10 +104,12 @@ body {
 
 
 .loader {
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border: 5px solid;
-  border-color: #FF3D00 transparent;
+  border-color: #0C5908 transparent;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
