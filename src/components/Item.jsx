@@ -5,7 +5,7 @@ const Item =(props)=>{
             <h2>{props.product.title}</h2>
             <img>{props.product.img}</img>
             <h3>${props.product.price}</h3>
-            <p>{props.product.description}</p>
+            <link>Ir a descripción del producto</link>
         </div>
     )
 }
