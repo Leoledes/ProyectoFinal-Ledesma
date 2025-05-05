@@ -5,13 +5,14 @@ import ItemDetail from "./ItemDetail"
 
 const ItemDetailContainer = () => {
     const { productId } = useParams()
+    const { categoryId } = useParams()
     const [product, setProduct] = useState()
 
 useEffect(()=>{
     getSingleProduct(productId).then((productFromPromise)=>{
         setProduct(productFromPromise)
     })
-},[])
+},[productId])
 
     return (
         <div>
