@@ -6,15 +6,21 @@ import ItemDetail from "./ItemDetail"
 const ItemDetailContainer = () => {
     const { productId } = useParams()
     const [product, setProduct] = useState()
-
+    const [loading, setLoading] = useState(true)
 useEffect(()=>{
     getSingleProduct(productId).then((productFromPromise)=>{
         setProduct(productFromPromise)
+        setLoading(false)
     })
 },[productId])
 
-    return (
+    if(loading) return 
         <div>
+        <span class="loader"></span>
+        </div>
+
+    return (
+        <div className={"itemcontainer"}>
             <ItemDetail product={product}></ItemDetail>
         </div>
     )
