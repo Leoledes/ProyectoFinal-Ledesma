@@ -11,7 +11,7 @@ useEffect(()=>{
     getSingleProduct(productId).then((productFromPromise)=>{
         setProduct(productFromPromise)
     })
-},[productId])
+},[])
 
     return (
         <div>
