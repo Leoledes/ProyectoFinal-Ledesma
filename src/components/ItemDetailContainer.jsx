@@ -1,7 +1,21 @@
+import { useEffect } from "react"
+import { getSingleProduct } from "../utils/getProducts"
+import { useParams } from "react-router-dom"
+import ItemDetail from "./ItemDetail"
+
 const ItemDetailContainer = () => {
+    const { productId } = useParams()
+    const [product, setProduct] = useState()
+
+useEffect(()=>{
+    getSingleProduct(productId).then((productFromPromise)=>{
+        setProduct(productFromPromise)
+    })
+},[productId])
+
     return (
         <div>
-            <p>Soy ItemDC</p>
+            <ItemDetail product={product}></ItemDetail>
         </div>
     )
 }
