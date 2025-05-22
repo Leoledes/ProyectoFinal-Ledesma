@@ -69,7 +69,7 @@ const productos = [
         price:"8842", 
         imgUrl: melatolDiaRelax, 
         description: "Medicamento herbario indicado para el alivio de los síntomas de ansiedad, nerviosismo, hiperexcitabilidad o irritabilidad, especialmente cuando éstas dan lugar a alteraciones del sueño, favoreciendo el reposo nocturno.", 
-        catergoy: "farmacia"}
+        category: "farmacia"}
 ]
 
 export const getProducts = (categoryId) => {
