@@ -10,8 +10,16 @@ const CartProvider = ({children}) => {
         setCart([...cart, {product: product, quantity: quantity }])
     }
 
+    const cleanCart =()=> {
+        setCart([])
+    }
+
+    const removeItem =(productId)=>{
+        setCart(cart.filter((cartProduct)=> cartProduct.product.id !== productId))
+    }
+
     return (
-    <cartContext.Provider value={{cart, onAdd}}>{children}</cartContext.Provider>
+    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem}}>{children}</cartContext.Provider>
     )
 }
 
