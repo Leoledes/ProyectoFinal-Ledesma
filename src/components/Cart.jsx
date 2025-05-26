@@ -3,7 +3,10 @@ import { cartContext } from "./CartContext";
 
 
 const Cart = () => {
-    const {cart, cleanCart, removeItem} = useContext(cartContext)
+    const {cart, cleanCart, removeItem, getTotalPrice} = useContext(cartContext)
+
+    const totalPrice = getTotalPrice()
+
     return (
         <div>
             <h2>Tus productos seleccionados</h2>
@@ -17,7 +20,8 @@ const Cart = () => {
                     <button onClick={()=>{removeItem(cartProduct.product.id)}}>Eliminar seleccionado</button>
                 </div>
             ))}
-            <button onClick={cleanCart}>Vaciar Carrito</button>
+            <h3>El precio total de tus productos es: ${totalPrice}</h3>
+            <button onClick={cleanCart}>Vaciar Carrito</button>            
         </div>
     )
 }

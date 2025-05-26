@@ -18,8 +18,18 @@ const CartProvider = ({children}) => {
         setCart(cart.filter((cartProduct)=> cartProduct.product.id !== productId))
     }
 
+    const getTotalPrice =()=>{
+        let totalPrice = 0
+
+        cart.forEach((cartProduct) => {
+            totalPrice = totalPrice + cartProduct.product.price * cartProduct.quantity
+        })
+
+        return totalPrice
+    }
+
     return (
-    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem}}>{children}</cartContext.Provider>
+    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem, getTotalPrice}}>{children}</cartContext.Provider>
     )
 }
 
