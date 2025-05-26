@@ -28,8 +28,18 @@ const CartProvider = ({children}) => {
         return totalPrice
     }
 
+    const getTotalItemsInCart = () =>{
+        let totalItemsInCart = 0
+
+        cart.forEach((cartProduct) => {
+            totalItemsInCart = totalItemsInCart + cartProduct.quantity
+        })
+
+        return totalItemsInCart 
+    }
+
     return (
-    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem, getTotalPrice}}>{children}</cartContext.Provider>
+    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem, getTotalPrice, getTotalItemsInCart}}>{children}</cartContext.Provider>
     )
 }
 

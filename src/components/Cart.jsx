@@ -7,6 +7,9 @@ const Cart = () => {
 
     const totalPrice = getTotalPrice()
 
+
+    if (cart.length === 0) return <h3>Faltan añadir productos al carrito!</h3>
+
     return (
         <div>
             <h2>Tus productos seleccionados</h2>
