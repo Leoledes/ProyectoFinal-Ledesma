@@ -5,8 +5,10 @@ import ItemDetailContainer from "./components/ItemDetailContainer"
 import CartProvider from "./components/CartContext"
 import './index.css'
 import Cart from "./components/Cart"
+import { createFirebaseApp } from "./utils/configFirebase"
 
 function App() {
+  createFirebaseApp()
   
   return (
     <BrowserRouter>
