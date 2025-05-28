@@ -8,21 +8,29 @@ const CartProvider = ({children}) => {
 
     const onAdd = (product, quantity) => {
     const existProductIndex = cart.findIndex(item => item.product.id === product.id)
-    if (existProductIndex !== -1) {
-        const updatedCart = [...cart]
-        updatedCart[existProductIndex].quantity += quantity
-        setCart(updatedCart)
-    } else {
-        setCart([...cart, { product, quantity }])
+        if (existProductIndex !== -1) {
+            const updatedCart = [...cart]
+            updatedCart[existProductIndex].quantity += quantity
+            setCart(updatedCart)
+        } else {
+            setCart([...cart, { product, quantity }])
+        }
     }
-}
 
     const cleanCart =()=> {
         setCart([])
     }
 
-    const removeItem =(productId)=> {
-        setCart(cart.filter((cartProduct)=> cartProduct.product.id !== productId))
+    const removeItem = (productId) => {
+    const existProductIndex = cart.findIndex(item => item.product.id === productId)
+        if (existProductIndex !== -1) {
+            const updatedCart = [...cart]
+            const currentQuantity = updatedCart[existProductIndex].quantity
+            if (currentQuantity > 1) {            
+            updatedCart[existProductIndex].quantity -= 1
+        } else {updatedCart.splice(existProductIndex, 1)}            
+        setCart(updatedCart)
+        }
     }
 
     const getTotalPrice =()=>{
