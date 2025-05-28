@@ -4,6 +4,7 @@ import { cartContext } from "./CartContext"
 import { useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import RenderInput from "./RenderInput"
 
 
 const Checkout = () => {
@@ -62,10 +63,10 @@ const Checkout = () => {
 
     return (
         <div>
-            <input placeholder="Nombre" onChange={handleChangeName}></input>
-            <input placeholder="Correo electronico" onChange={handleChangeEmail}></input>
-            <input placeholder="Telefono" onChange={handleChangePhone}></input>
-            <input placeholder="Direccion" onChange={handleChangeAddress}></input>
+            <RenderInput placeholder="Nombre Completo" onChange={handleChangeName} />
+            <RenderInput placeholder="Correo Electronico" onChange={handleChangeEmail} />
+            <RenderInput placeholder="Telefono" onChange={handleChangePhone} />
+            <RenderInput placeholder="Direccion" onChange={handleChangeAddress} />
 
             <button 
                 disabled={!(name !== '' && email !== '' && phone !== '' && address !== '')}
