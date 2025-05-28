@@ -7,8 +7,15 @@ const CartProvider = ({children}) => {
     const[cart, setCart] = useState([])
 
     const onAdd = (product, quantity) => {
-        setCart([...cart, {product: product, quantity: quantity }])
+    const existProductIndex = cart.findIndex(item => item.product.id === product.id)
+    if (existProductIndex !== -1) {
+        const updatedCart = [...cart]
+        updatedCart[existProductIndex].quantity += quantity
+        setCart(updatedCart)
+    } else {
+        setCart([...cart, { product, quantity }])
     }
+}
 
     const cleanCart =()=> {
         setCart([])
