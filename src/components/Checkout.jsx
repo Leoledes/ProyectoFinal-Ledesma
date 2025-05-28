@@ -1,5 +1,5 @@
 import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { cartContext } from "./CartContext"
 import { useNavigate } from "react-router-dom"
 
@@ -8,7 +8,7 @@ const Checkout = () => {
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [phone, setPhone] = useState(0)
+    const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
 
     const navigate = useNavigate()
