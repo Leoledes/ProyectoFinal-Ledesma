@@ -2,6 +2,9 @@ import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/fire
 import { useContext, useState } from "react"
 import { cartContext } from "./CartContext"
 import { useNavigate } from "react-router-dom"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 const Checkout = () => {
     const { getTotalPrice, cart, cleanCart } = useContext(cartContext)
@@ -13,6 +16,7 @@ const Checkout = () => {
 
     const navigate = useNavigate()
     const handleCreateOrder = () => {
+        const MySwal = withReactContent(Swal)
         const db = getFirestore()
         const collectionRef = collection(db, "orders")
 
@@ -30,7 +34,11 @@ const Checkout = () => {
 
         addDoc(collectionRef, orderData)
         .then((response) => {
-            alert(`Tu orden fue creada correctamente con el id: ${response.id}`)
+            MySwal.fire({
+            title: `Tu orden fue creada correctamente con el id: ${response.id}`,
+            icon: "success",
+            draggable: true
+        });
             cleanCart()
             navigate("/")
         })
