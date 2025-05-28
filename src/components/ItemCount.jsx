@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { cartContext } from "./CartContext";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function ItemCount({ product }) {
     const {onAdd} = useContext(cartContext)
@@ -19,7 +21,15 @@ function ItemCount({ product }) {
         <h2>{contador}</h2>
         <button onClick={sumar}>+</button>
         </div>
-        <button onClick={() => {onAdd(product, contador)}}> Agregar al carrito</button>
+        <button onClick={() => {onAdd(product, contador)
+                Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Producto agregado al carrito",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }}> Agregar al carrito</button>
         </div>
     )
 }
