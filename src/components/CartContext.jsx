@@ -1,10 +1,16 @@
 import { createContext, useState } from "react";
+import { useEffect } from "react";
 
 export const cartContext = createContext()
 
 const CartProvider = ({children}) => {
 
-    const[cart, setCart] = useState([])
+    const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem("cart")
+    return storedCart ? JSON.parse(storedCart) : []
+    })
+
+    useEffect(() => {localStorage.setItem("cart", JSON.stringify(cart))}, [cart])
 
     const onAdd = (product, quantity) => {
     const existProductIndex = cart.findIndex(item => item.product.id === product.id)
@@ -19,6 +25,7 @@ const CartProvider = ({children}) => {
 
     const cleanCart =()=> {
         setCart([])
+        localStorage.removeItem("cart")
     }
 
     const removeItem = (productId) => {
