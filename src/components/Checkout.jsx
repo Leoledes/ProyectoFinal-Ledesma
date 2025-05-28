@@ -17,10 +17,6 @@ const Checkout = () => {
     const navigate = useNavigate()
     const handleCreateOrder = () => {
         const MySwal = withReactContent(Swal)
-        if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
-            MySwal.fire("Por favor completá todos los campos antes de continuar")
-            return
-        }
         const db = getFirestore()
         const collectionRef = collection(db, "orders")
 
@@ -71,7 +67,9 @@ const Checkout = () => {
             <input placeholder="Telefono" onChange={handleChangePhone}></input>
             <input placeholder="Direccion" onChange={handleChangeAddress}></input>
 
-            <button onClick={handleCreateOrder}>Realizar pedido</button>
+            <button 
+                disabled={!(name !== '' && email !== '' && phone !== '' && address !== '')}
+                onClick={handleCreateOrder}>Realizar pedido</button>
         </div>
     )
 }

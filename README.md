@@ -1,13 +1,14 @@
 # E-commerce de Farmacia en React
 
 Este proyecto es un ecommerce de **Farmacia** desarrollada con **React** para el curso de React.js en Coderhouse. 
-Permite a los usuarios navegar productos, agregarlos al carrito, y realizar pedidos. Los datos se almacenan en **Firebase/Firestore**, y se utilizan notificaciones personalizadas con **SweetAlert2** para mejorar la experiencia del usuario.
+Permite a los usuarios navegar productos, agregarlos al carrito, y realizar pedidos. Los datos se almacenan en **Firebase/Firestore**, estilado con **CSS** y se utilizan notificaciones personalizadas con **SweetAlert2** para mejorar la experiencia del usuario.
 
 ---
 
 ## Tecnologías utilizadas
 
 -  **React** (Vite)
+-  **CSS**
 -  **Firebase** + **Firestore**
 -  **SweetAlert2**
 -  **React Router DOM**
