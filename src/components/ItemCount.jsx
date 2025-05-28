@@ -21,15 +21,24 @@ function ItemCount({ product }) {
         <h2>{contador}</h2>
         <button onClick={sumar}>+</button>
         </div>
-        <button onClick={() => {onAdd(product, contador)
+        <button onClick={() => {if (contador > 0) {
+            onAdd(product, contador)
                 Swal.fire({
                 position: "top-end",
                 icon: "success",
                 title: "Producto agregado al carrito",
                 showConfirmButton: false,
                 timer: 1500
-            });
-        }}> Agregar al carrito</button>
+                })
+            } else {
+                Swal.fire({
+                title: 'Cantidad inválida',
+                text: 'Debes agregar al menos 1 unidad.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+                })
+            }}
+        }> Agregar al carrito</button>
         </div>
     )
 }
