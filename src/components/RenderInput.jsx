@@ -1,6 +1,6 @@
-const RenderInput =({input, onChange}) => {
+const RenderInput =({input, onChange, name}) => {
     return (
-        <input type="text" onChange={onChange}>{input}</input>
+        <input type="text" onChange={onChange} name={name}>{input}</input>
     )
 }
 

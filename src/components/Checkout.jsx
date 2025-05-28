@@ -10,10 +10,16 @@ import RenderInput from "./RenderInput"
 const Checkout = () => {
     const { getTotalPrice, cart, cleanCart } = useContext(cartContext)
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phone, setPhone] = useState("")
-    const [address, setAddress] = useState("")
+    const [values, setValues] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        address: ""
+    });
+
+    const handleChange = (evt) => {
+        setValues({...values, [evt.target.name]: evt.target.value});
+    };
 
     const navigate = useNavigate()
     const handleCreateOrder = () => {
@@ -23,10 +29,10 @@ const Checkout = () => {
 
         const orderData = {
             buyer: {
-                name,
-                email,
-                phone,
-                address
+                name: values.name,
+                email: values.email,
+                phone: values.phone,
+                address: values.address,
             },
             total: getTotalPrice(),
             items: cart,
@@ -47,29 +53,16 @@ const Checkout = () => {
             console.log("Error al crear la orden")
         })        
     }
-    
-    const handleChangeName = (evt) => {
-        setName(evt.target.value)
-    }
-    const handleChangeEmail = (evt) => {
-        setEmail(evt.target.value)
-    }
-    const handleChangePhone = (evt) => {
-        setPhone(evt.target.value)
-    }
-    const handleChangeAddress = (evt) => {
-        setAddress(evt.target.value)
-    }
 
     return (
         <div>
-            <RenderInput placeholder="Nombre Completo" onChange={handleChangeName} />
-            <RenderInput placeholder="Correo Electronico" onChange={handleChangeEmail} />
-            <RenderInput placeholder="Telefono" onChange={handleChangePhone} />
-            <RenderInput placeholder="Direccion" onChange={handleChangeAddress} />
+            <RenderInput name="name" placeholder="Nombre Completo" onChange={handleChange} />
+            <RenderInput name="email" placeholder="Correo Electrónico" onChange={handleChange} />
+            <RenderInput name="phone" placeholder="Teléfono" onChange={handleChange} />
+            <RenderInput name="address" placeholder="Dirección" onChange={handleChange} />
 
             <button 
-                disabled={!(name !== '' && email !== '' && phone !== '' && address !== '')}
+                disabled={values.name === '' || values.email === '' || values.phone === '' || values.address === ''}
                 onClick={handleCreateOrder}>Realizar pedido</button>
         </div>
     )
