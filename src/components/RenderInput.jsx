@@ -1,7 +1,7 @@
 const RenderInput =({label, onChange, name, value}) => {
     return (
-        <div>
-        <label>{label}</label>
+        <div className="form-group">
+        <label className="form-label">{label}</label>
         <input type="text" onChange={onChange} name={name} value={value}></input>
         </div>
         

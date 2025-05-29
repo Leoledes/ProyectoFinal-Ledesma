@@ -59,15 +59,14 @@ const Checkout = () => {
     }
 
     return (
-        <div>
-            <RenderInput name="name" label="Nombre Completo" value={values.name} onChange={handleChange} />
-            <RenderInput name="email" label="Correo Electrónico" value={values.email} onChange={handleChange} />
-            <RenderInput name="phone" label="Teléfono" value={values.phone} onChange={handleChange} />
-            <RenderInput name="address" label="Dirección" value={values.address} onChange={handleChange} />
+        <div className={"checkout-container"}>
+            <RenderInput name="name" label="Nombre Completo:" value={values.name} onChange={handleChange} />
+            <RenderInput name="email" label="Correo Electrónico:" value={values.email} onChange={handleChange} />
+            <RenderInput name="phone" label="Teléfono:" value={values.phone} onChange={handleChange} />
+            <RenderInput name="address" label="Dirección:" value={values.address} onChange={handleChange} />
 
-            <button 
-                disabled={values.name === '' || values.email === '' || values.phone === '' || values.address === ''}
-                onClick={handleCreateOrder}>Realizar pedido</button>
+            <button className="btn-primary" disabled={values.name === '' || values.email === '' || values.phone === '' || values.address === ''}
+             onClick={handleCreateOrder}>Realizar pedido</button>
         </div>
     )
 }
