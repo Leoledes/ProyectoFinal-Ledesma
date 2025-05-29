@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import { useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
+import Swal from "sweetalert2"
 
 export const cartContext = createContext()
 
@@ -29,39 +29,57 @@ const CartProvider = ({children}) => {
     }
 
     const removeItem = (productId) => {
-    const existProductIndex = cart.findIndex(item => item.product.id === productId)
-        if (existProductIndex !== -1) {
-            const updatedCart = [...cart]
-            const currentQuantity = updatedCart[existProductIndex].quantity
-            if (currentQuantity > 1) {            
-            updatedCart[existProductIndex].quantity -= 1
-        } else {updatedCart.splice(existProductIndex, 1)}            
-        setCart(updatedCart)
+        const updatedCart = cart.filter(item => item.product.id !== productId);
+        setCart(updatedCart);
+    };
+
+    const increaseItem = (productId) => {
+        const updatedCart = cart.map(item => {
+        if (item.product.id === productId) {
+        if (item.quantity < item.product.stock) {
+          return { ...item, quantity: item.quantity + 1 }
+            } else {
+            Swal.fire({
+                title: "Atención",
+                text: `Superas el stock disponible máximo: ${item.product.stock}`,
+                icon: "warning"
+            })}
         }
+        return item
+        })
+        setCart(updatedCart)
+    }
+
+    const decreaseItem = (productId) => {
+        const updatedCart = cart
+        .map(item => {
+            if (item.product.id === productId) {
+            return { ...item, quantity: item.quantity - 1 }
+            }
+            return item
+        })
+        .filter(item => item.quantity > 0)
+        setCart(updatedCart)
     }
 
     const getTotalPrice =()=>{
         let totalPrice = 0
-
         cart.forEach((cartProduct) => {
             totalPrice = totalPrice + cartProduct.product.price * cartProduct.quantity
         })
-
         return totalPrice
     }
 
     const getTotalItemsInCart = () =>{
         let totalItemsInCart = 0
-
         cart.forEach((cartProduct) => {
             totalItemsInCart = totalItemsInCart + cartProduct.quantity
         })
-
         return totalItemsInCart 
     }
 
     return (
-    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem, getTotalPrice, getTotalItemsInCart}}>{children}</cartContext.Provider>
+    <cartContext.Provider value={{cart, onAdd, cleanCart, removeItem, increaseItem, decreaseItem, getTotalPrice, getTotalItemsInCart}}>{children}</cartContext.Provider>
     )
 }
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 
 const Cart = () => {
-    const {cart, cleanCart, removeItem, getTotalPrice} = useContext(cartContext)
+    const {cart, cleanCart, removeItem, increaseItem, decreaseItem, getTotalPrice} = useContext(cartContext)
 
     const totalPrice = getTotalPrice()
 
@@ -20,7 +20,9 @@ const Cart = () => {
                     <img src={cartProduct.product.imgUrl}></img>
                     <h3>Precio x unidad: ${cartProduct.product.price}</h3>
                     <h4>Cantidad seleccionada:{cartProduct.quantity}</h4>
-                    <button onClick={()=>{removeItem(cartProduct.product.id)}}>Eliminar seleccionado</button>
+                    <button onClick={() => {decreaseItem(cartProduct.product.id)}}>-</button>
+                    <button onClick={() => {increaseItem(cartProduct.product.id)}}>+</button>                    
+                    <button onClick={() => {removeItem(cartProduct.product.id)}}>Eliminar selección</button>
                 </div>
             ))}
             <h3>El precio total de tus productos es: ${totalPrice}</h3>
