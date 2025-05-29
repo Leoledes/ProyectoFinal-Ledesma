@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, getFirestore, serverTimestamp, doc, updateDoc } from "firebase/firestore"
 import { useContext, useState } from "react"
 import { cartContext } from "./CartContext"
 import { useNavigate } from "react-router-dom"
@@ -15,11 +15,11 @@ const Checkout = () => {
         email: "",
         phone: "",
         address: ""
-    });
+    })
 
     const handleChange = (evt) => {
         setValues({...values, [evt.target.name]: evt.target.value});
-    };
+    }
 
     const navigate = useNavigate()
     const handleCreateOrder = () => {
@@ -40,14 +40,18 @@ const Checkout = () => {
         }
 
         addDoc(collectionRef, orderData)
-        .then((response) => {
-            MySwal.fire({
-            title: `Tu orden fue creada correctamente con el id: ${response.id}`,
-            icon: "success",
-            draggable: true
-        });
-            cleanCart()
-            navigate("/")
+            .then((response) => {
+                MySwal.fire({
+                title: `Tu orden fue creada correctamente con el id: ${response.id}`,
+                icon: "success",
+                draggable: true
+            })
+            cart.forEach((cartProduct)=>{
+                const docRef = doc(db, "products", cartProduct.product.id)
+                updateDoc(docRef, {stock: cartProduct.product.stock - cartProduct.quantity})
+            })                        
+        cleanCart()
+        navigate("/")
         })
         .catch(()=>{
             console.log("Error al crear la orden")
@@ -56,10 +60,10 @@ const Checkout = () => {
 
     return (
         <div>
-            <RenderInput name="name" placeholder="Nombre Completo" onChange={handleChange} />
-            <RenderInput name="email" placeholder="Correo Electrónico" onChange={handleChange} />
-            <RenderInput name="phone" placeholder="Teléfono" onChange={handleChange} />
-            <RenderInput name="address" placeholder="Dirección" onChange={handleChange} />
+            <RenderInput name="name" label="Nombre Completo" value={values.name} onChange={handleChange} />
+            <RenderInput name="email" label="Correo Electrónico" value={values.email} onChange={handleChange} />
+            <RenderInput name="phone" label="Teléfono" value={values.phone} onChange={handleChange} />
+            <RenderInput name="address" label="Dirección" value={values.address} onChange={handleChange} />
 
             <button 
                 disabled={values.name === '' || values.email === '' || values.phone === '' || values.address === ''}

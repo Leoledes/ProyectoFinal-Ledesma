@@ -17,7 +17,7 @@ function ItemCount({ product }) {
     }
 
     function restar() {
-        if (contador >0) setContador(contador - 1)
+        if (contador > 0) setContador(contador - 1)
     }
 
     return (
