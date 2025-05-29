@@ -8,6 +8,7 @@ const ItemDetail = ({product}) => {
             <h4>{product?.description}</h4>
             <h3>Precio: ${product?.price}</h3>
             <ItemCount product={product}></ItemCount>
+            <h5>Stock disponible: {product.stock}</h5>
         </div>
     )
 }

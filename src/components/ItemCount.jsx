@@ -8,10 +8,16 @@ function ItemCount({ product }) {
     const [contador, setContador] = useState(0)
 
     function sumar() {
-        setContador(contador + 1)
+        if (contador < product.stock) setContador(contador + 1)
+        else Swal.fire({
+            title: "Atención",
+            text: `Superas el stock disponible máximo: ${product.stock}`,
+            icon: "warning"
+        },)
     }
+
     function restar() {
-        setContador(contador - 1)
+        if (contador >0) setContador(contador - 1)
     }
 
     return (
@@ -41,6 +47,7 @@ function ItemCount({ product }) {
         }> Agregar al carrito</button>
         </div>
     )
+
 }
 
 export default ItemCount
