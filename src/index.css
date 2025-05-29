@@ -343,3 +343,65 @@ button:disabled {
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .navbar .logo {
+    width: 50%;
+    margin: 0 auto 16px auto;
+  }
+
+  .cartcard {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .cartcard img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 12px;
+  }
+
+  .cartcard-info {
+    align-items: center;
+  }
+
+  .itemcontainer {
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+  }
+
+  .itemdetail {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .card {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .itemlist {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .checkout-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .buttonlink,
+  .buttonvaciar {
+    width: 100%;
+    text-align: center;
+  }
+}
