@@ -1,3 +1,5 @@
+//Dejo el array de productos que utilicé como base antes de pasar todo a Firebase: (las imagenes a las que se hace referencia las quité del proyecto)
+
 import pastaDentalColgate from "../assets/pastaDentalColgate.png";
 import shampooElvive from "../assets/shampooElvive.png";
 import toallasHumedasHuggies from "../assets/toallasHumedasHuggies.png";

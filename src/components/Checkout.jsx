@@ -42,7 +42,7 @@ const Checkout = () => {
         addDoc(collectionRef, orderData)
             .then((response) => {
                 MySwal.fire({
-                title: `Tu orden fue creada correctamente con el id: ${response.id}`,
+                title: `Gracias ${values.name}.<br> Tu orden fue creada correctamente con el ID: ${response.id}<br> Será enviada a la dirección: ${values.address} a la brevedad`,
                 icon: "success",
                 draggable: true
             })
